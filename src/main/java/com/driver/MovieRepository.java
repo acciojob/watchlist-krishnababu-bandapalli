@@ -78,5 +78,6 @@ public class MovieRepository {
         for(String movie: moviesSet){
             movieMap.remove(movie);
         }
+        directorMovieMapping.clear();
     }
 }

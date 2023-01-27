@@ -47,13 +47,19 @@ public class MovieRepository {
         return new ArrayList<>(movies.keySet());
     }
     public void deleteDirectorByName(String directorName) {
-        if (moviesMappedWithDirector.containsKey(directorName)) {
-            for (String movieName: moviesMappedWithDirector.get(directorName)) {
-                if(movies.containsKey(movieName)) movies.remove(movieName);
+        List<String> moviesList = new ArrayList<String>();
+        if(moviesMappedWithDirector.containsKey(directorName)){
+            moviesList = moviesMappedWithDirector.get(directorName);
+            for(String movie: moviesList){
+                if(movies.containsKey(movie)){
+                    movies.remove(movie);
+                }
             }
+
             moviesMappedWithDirector.remove(directorName);
         }
-        if(directors.containsKey(directorName)) {
+
+        if(directors.containsKey(directorName)){
             directors.remove(directorName);
         }
     }

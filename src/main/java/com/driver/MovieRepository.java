@@ -11,9 +11,9 @@ public class MovieRepository {
     private Map<String, List<String>> moviesMappedWithDirector;
 
     public MovieRepository() {
-        this.movies = new HashMap<>();
-        this.directors = new HashMap<>();
-        this.moviesMappedWithDirector = new HashMap<>();
+        this.movies = new HashMap<String, Movie>();
+        this.directors = new HashMap<String, Director>();
+        this.moviesMappedWithDirector = new HashMap<String, List<String>>();
     }
 
     public void addMovie(Movie movie) {

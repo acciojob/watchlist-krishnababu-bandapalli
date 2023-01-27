@@ -51,16 +51,18 @@ public class MovieRepository {
     public void deleteDirectorByName(String directorName) {
         if (moviesMappedWithDirector.containsKey(directorName)) {
             for (String movieName: moviesMappedWithDirector.get(directorName)) {
-                movies.remove(movieName);
+                if(movies.containsKey(movieName)) movies.remove(movieName);
             }
             moviesMappedWithDirector.remove(directorName);
         }
-        directors.remove(directorName);
+        if(directors.containsKey(directorName)) {
+            directors.remove(directorName);
+        }
     }
     public void deleteAllDirectors() {
         for (String director: moviesMappedWithDirector.keySet()) {
             for (String movie: moviesMappedWithDirector.get(director)) {
-                movies.remove(movie);
+                if(movies.containsKey(movie)) movies.remove(movie);
             }
         }
         moviesMappedWithDirector.clear();

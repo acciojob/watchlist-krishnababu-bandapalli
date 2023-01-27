@@ -6,9 +6,9 @@ import java.util.*;
 
 @Repository
 public class MovieRepository {
-    Map<String, Movie> movies;
-    Map<String, Director> directors;
-    Map<String, List<String>> moviesMappedWithDirector;
+    private Map<String, Movie> movies;
+    private Map<String, Director> directors;
+    private Map<String, List<String>> moviesMappedWithDirector;
 
     public MovieRepository() {
         this.movies = new HashMap<>();

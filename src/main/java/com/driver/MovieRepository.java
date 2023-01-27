@@ -67,6 +67,6 @@ public class MovieRepository {
         for (String movie: moviesSet) {
             if (movies.containsKey(movie)) movies.remove(movie);
         }
-        moviesMappedWithDirector.clear();
+//        moviesMappedWithDirector.clear();
     }
 }

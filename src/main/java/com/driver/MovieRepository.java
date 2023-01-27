@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MovieRepository {
 
-    private HashMap<String, Movie> movieMap;
-    private HashMap<String, Director> directorMap;
-    private HashMap<String, List<String>> directorMovieMapping;
+    private Map<String, Movie> movieMap;
+    private Map<String, Director> directorMap;
+    private Map<String, List<String>> directorMovieMapping;
 
     public MovieRepository(){
         this.movieMap = new HashMap<>();
@@ -37,11 +37,13 @@ public class MovieRepository {
     }
 
     public Movie findMovie(String movie){
-        return movieMap.get(movie);
+        if(movieMap.containsKey(movie)) return movieMap.get(movie);
+        else return new Movie();
     }
 
     public Director findDirector(String director){
-        return directorMap.get(director);
+        if(directorMap.containsKey(director)) return directorMap.get(director);
+        else return new Director();
     }
 
     public List<String> findMoviesFromDirector(String director){
@@ -68,12 +70,12 @@ public class MovieRepository {
     }
 
     public void deleteAllDirector(){
-        HashSet<String> moviesSet = new HashSet<>();
+        HashSet<String> movieSet = new HashSet<>();
         for(String director: directorMovieMapping.keySet()){
-            moviesSet.addAll(directorMovieMapping.get(director));
+            movieSet.addAll(directorMovieMapping.get(director));
         }
 
-        for(String movie: moviesSet){
+        for(String movie: movieSet){
             movieMap.remove(movie);
         }
         directorMovieMapping.clear();

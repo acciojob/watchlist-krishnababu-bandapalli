@@ -23,13 +23,12 @@ public class MovieRepository {
         directors.put(director.getName(), director);
     }
     public void addMovieDirectorPair(String movieName, String directorName) {
-        if(moviesMappedWithDirector.containsKey(directorName)) {
-            if(movies.containsKey(movieName) && directors.containsKey(directorName)) {
-                movies.put(movieName, movies.get(movieName));
-                directors.put(directorName, directors.get(directorName));
-            }
-            List<String> currentMovies;
-            currentMovies = moviesMappedWithDirector.get(directorName);
+        if(movies.containsKey(movieName) && directors.containsKey(directorName)){
+            movies.put(movieName, movies.get(movieName));
+            directors.put(directorName, directors.get(directorName));
+            List<String> currentMovies = new ArrayList<String>();
+            if(moviesMappedWithDirector.containsKey(directorName)) currentMovies = moviesMappedWithDirector.get(directorName);
+            currentMovies.add(movieName);
             moviesMappedWithDirector.put(directorName, currentMovies);
         }
     }
